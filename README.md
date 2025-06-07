@@ -86,7 +86,6 @@ You can also explore the API documentation at `http://localhost:8000/docs` when 
 .
 ├── app/
 │   ├── main.py               # FastAPI application
-│   └── patent_logic.py       # Patent fetching and summarization logic
 ├── patent/
 │   └── summarize_patent.py   # forgen pipeline for summarization
 ├── requirements.txt          # Python dependencies
@@ -106,13 +105,6 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
 
-
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
