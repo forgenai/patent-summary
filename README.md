@@ -1,7 +1,3 @@
-Certainly! Based on your project at [forgenai/patent-summary](https://github.com/forgenai/patent-summary), here's a comprehensive `README.md` to help users understand, install, and utilize your patent summarization API.
-
----
-
 # Patent Summary API
 
 **Patent Summary API** is a Python-based web service that accepts a U.S. patent or publication number and returns a structured, technical summary highlighting the invention's problem and solution. It leverages the [forgen](https://github.com/forgenai/forgen) framework and OpenAI's language models to generate concise summaries suitable for engineers, analysts, and legal professionals.
