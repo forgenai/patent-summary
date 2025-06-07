@@ -23,7 +23,7 @@ output_schema = {
 def chunk_full_text(input_data):
     full_text = input_data.get("full_text", "")
     custom_instruction = input_data.get("custom_instruction", "")
-    max_words_per_chunk = 1000
+    max_words_per_chunk = 10000
 
     words = full_text.split()
     chunks = [
@@ -72,7 +72,7 @@ def summarize_chunks(input_data, openai_client=None):
             openai_client=openai_client
         )
 
-        all_summaries.append(response.strip())
+        all_summaries.append(response.strip() if isinstance(response, str) else response["output"] if "output" in response else response)
 
     return {"partial_summaries": all_summaries}
 
@@ -81,7 +81,8 @@ def summarize_chunks(input_data, openai_client=None):
 
 def merge_summaries(input_data, openai_client=None):
     summaries = input_data.get("partial_summaries", [])
-
+    if len(summaries) == 1:
+        return {"summary": summaries[0]}
     prompt = (
         "Given the following individual summaries of a patent document, synthesize them into one clear, concise technical summary. "
         "Focus on identifying the central technical problem and the inventive solution. Keep the language objective and professional."
@@ -98,7 +99,7 @@ def merge_summaries(input_data, openai_client=None):
         openai_client=openai_client
     )
 
-    return {"summary": response.strip()}
+    return {"summary": response.strip() if isinstance(response, str) else response["output"] if "output" in response else response}
 
 # ─────────────────────────────────────────────────────────
 # PIPELINE ASSEMBLY

@@ -5,8 +5,8 @@ FROM python:3.10-slim
 # Set build arguments
 ARG GITHUB_TOKEN
 ARG GITHUB_USER
-ARG FORGEN_REPO
-ARG USPTO_DATA_REPO
+ARG FORGEN_REPO=ForGen-AI/forgen
+ARG USPTO_DATA_REPO=ForGen-AI/uspto-data
 
 # Environment settings
 ENV PYTHONDONTWRITEBYTECODE=1
